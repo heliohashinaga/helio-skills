@@ -119,11 +119,13 @@ End-to-end, visual and Storybook test conventions for coding agents.
 | **security** | OWASP checklist, secret scanning, SAST, SSRF/authz checks |
 | **docs** | README, ADR, runbooks, API documentation |
 | **speckit** | Spec Kit — spec-driven development workflow (`/speckit.*`) |
+| **clean-code** | Clean-code standards: naming, small functions, honest comments; formatting left to formatters |
 
 **Links**:
 - [`skills/gitmoji/SKILL.md`](skills/gitmoji/SKILL.md)
 - [`skills/security/SKILL.md`](skills/security/SKILL.md)
 - [`skills/docs/SKILL.md`](skills/docs/SKILL.md)
+- [`skills/clean-code/SKILL.md`](skills/clean-code/SKILL.md)
 
 ---
 

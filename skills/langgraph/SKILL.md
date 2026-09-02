@@ -284,7 +284,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.prebuilt import create_react_agent, ToolNode, tools_condition
 ```
 
-Full runnable examples in `references/examples.md`.
+Read `references/examples.md` when you need a full runnable example beyond the minimal snippets above.
 
 ---
 

@@ -10,9 +10,6 @@ This skill wraps hledger commands for hledger accounting projects, based on hled
 ## Project Structure
 
 ```
-## Project Structure
-
-```
 your-project/
 ├── [MAIN_JOURNAL].journal       # Main journal (entry point, includes sub-journals)
 ├── hledger.conf                 # hledger configuration file
@@ -449,20 +446,6 @@ hledger --no-conf --file [JOURNAL_FILE] check  # Safe for automation
 
 ### "Import doesn't find my CSV"
 
-- **Always use `--dry-run` first** when importing CSV to preview transactions
-- **Validate after changes** with `hledger --no-conf --file [JOURNAL_FILE] check`
-- **Use `-n`/`--no-conf`** in scripts to avoid config file side effects
-- **Use `--pretty`** for better table formatting (can be added to hledger.conf)
-- **Use `--depth N`** to get summaries without too much detail
-- **Sort by amount** with `-S`/`--sort-amount` (in flat mode)
-- **Show empty/zero accounts** with `-E`/`--empty`
-- **Exclude virtual postings** with `-R`/`--real`
-- **hledger accepts unambiguous prefixes** for flags: `--dry` for `--dry-run`, `-M` for `--monthly`, etc.
-
-- The pipe character `|` in descriptions separates payee from note: `PAYEE | NOTE`
-- Two or more spaces are required between account name and amount in postings
-
-
 **Problem**: `hledger import bank.csv` says file not found
 
 **Solution**:
@@ -495,14 +478,8 @@ hledger --no-conf --file [JOURNAL_FILE] check  # Safe for automation
 - **Always use `--dry-run` first** when importing CSV to preview transactions
 - **Validate after changes** with `hledger --no-conf --file [JOURNAL_FILE] check`
 - **Use `--no-conf --file` in scripts** to avoid config file side effects and double-read errors
-- **Use `-n`/`--no-conf`** when troubleshooting to isolate config issues
-- **Use `--pretty`** for better table formatting (can be added to hledger.conf)
 - **Use `--depth N`** to get summaries without too much detail
 - **Sort by amount** with `-S`/`--sort-amount` (in flat mode)
 - **Show empty/zero accounts** with `-E`/`--empty`
 - **Exclude virtual postings** with `-R`/`--real`
 - **hledger accepts unambiguous prefixes** for flags: `--dry` for `--dry-run`, `-M` for `--monthly`, etc.
-- **Never put `--file` in hledger.conf** if you also pass it on the command line (causes double-read errors)
-
-- The pipe character `|` in descriptions separates payee from note: `PAYEE | NOTE`
-- Two or more spaces are required between account name and amount in postings

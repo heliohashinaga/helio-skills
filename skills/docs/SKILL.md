@@ -76,9 +76,6 @@ first-class deliverable (part of the Definition of Done).
 - Checklists over paragraphs; expected output for normal/abnormal; owned by
   teams; linked from alerts; updated after each incident.
 
-## Gitmoji
-Use `:memo:` with docs scope — e.g. `:memo: docs(adr): record postgres choice`.
-
 ## Common pitfalls
 - Documenting the *what* instead of the *why*.
 - Repeating what code already shows; duplicating across files.

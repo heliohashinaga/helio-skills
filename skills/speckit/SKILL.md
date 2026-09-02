@@ -23,12 +23,6 @@ Spec Kit "flips the script" on traditional development: specifications become
 guiding them. It is a **process**, not a technology — it is stack-agnostic and
 works across 30+ AI coding agent integrations.
 
-> ⚠️ **Name ambiguity.** "Speckit" collides with unrelated projects: **Spekit**
-> (a sales/revenue enablement platform) and **PySpecKit** (an astronomy spectral
-> analysis toolkit). In an agent/coding context, "speckit" almost always refers
-> to the **GitHub spec-kit** SDD toolkit (https://github.com/github/spec-kit,
-> https://speckit.org). Confirm intent before assuming.
-
 ---
 
 ## 1. Core concept
@@ -281,5 +275,4 @@ priority stack top-down (project > user > built-in), first match wins:
 - Repo: https://github.com/github/spec-kit
 - Site: https://speckit.org/
 
-See `references/quickstart.md` and `references/agentic-sdd.md` in this skill for
-condensed copies of the official guides.
+See `references/quickstart.md` when installing or running a project through its first feature, and `references/agentic-sdd.md` when you need the full command semantics beyond the table above.

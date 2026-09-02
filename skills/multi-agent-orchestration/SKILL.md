@@ -129,4 +129,4 @@ Stop and ask the user when a required product/architecture/security decision is
 unapproved, cleanup could destroy unrecovered work, or reviewers disagree on a
 scope-changing fix. Do not loop for optional polish.
 
-See `REFERENCE.md` for recipes and `TROUBLESHOOTING.md` for diagnosis.
+See `REFERENCE.md` when you need a concrete recipe (planner→writer→reviewer chains, rolling fan-out), and `TROUBLESHOOTING.md` when a run misbehaves (blocked tools, lost children, worktree failures).

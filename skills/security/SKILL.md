@@ -64,7 +64,3 @@ suggestion and the OWASP category. When the caller's structured schema uses
 schema's values. In a broader code-review report, retain its overall verdict and
 add `Security: SECURE | SECURITY_CHANGES_REQUESTED`.
 Never approve with unresolved Critical/High findings.
-
-## Gitmoji
-Security fixes and hardening: `:lock:` — e.g.
-`:lock: fix(security): parameterize sql`.

@@ -10,6 +10,8 @@ Audit an existing skill against the writing levers, then refactor it. The audit 
 
 Read [`writing-for-agents`](../writing-for-agents/SKILL.md) first if available — every check below is one of its levers applied as a diagnostic. When the skill targets pi, also read [`references/pi.md`](../create-skill/references/pi.md) for frontmatter and discovery rules to audit against. When **creating** a skill from scratch rather than auditing one, use the `create-skill` skill instead.
 
+The rubric below is the audit's list of questions; `create-skill` carries the current line-count target and the review checklist a skill should pass — audit against **that** as the single source of truth, not a number copied here.
+
 ## Audit
 
 Read the whole skill (SKILL.md plus every file it points at), then run these checks. Each is a question; a "no" is a finding.
@@ -25,7 +27,7 @@ Read the whole skill (SKILL.md plus every file it points at), then run these che
 - **Sediment**: is every line still relevant to what the skill does today, or are stale layers settling?
 - **Duplication**: is any meaning stated in two places (within the skill, or restating the environment — `package.json`, `--help`, directory layout)? Keep one source of truth; cache only what the environment cannot confess.
 - **Negations**: prohibitions without a paired positive target? Reframe to what to do.
-- **Sprawl**: is SKILL.md carrying reference only some branches need? Push it behind a pointer. Approaching ~500 lines is the hard signal.
+- **Sprawl**: is SKILL.md carrying reference only some branches need? Push it behind a pointer. Use the line-count target from `create-skill` as the fatigue signal, not a number restated here.
 - **Buried steps**: if the skill has steps, is flat reference burying them? Disclose the reference so the steps stay visible.
 - **Completion criteria**: does every step end on a checkable, demanding condition? Vague bounds invite premature completion.
 - **Leading words**: passages restating one idea in many words, begging to collapse into a single token?
@@ -34,6 +36,10 @@ Read the whole skill (SKILL.md plus every file it points at), then run these che
 **Pointers:**
 - Every reference file reachable through a pointer that states _when_ to read it? A pointer that names the target but not the branch is a variance bug.
 - Any must-have material sitting behind a weakly worded pointer? Sharpen the wording first; inline only if sharpening fails.
+
+**Template:**
+- Does the skill follow the standard template (`Quick start` → `Workflows` → `Advanced features`)? If not, is the deviation justified — or is it just a skill that grew without the leash?
+- Does it pass the `create-skill` review checklist? Run it on this skill the same way it would be run on any other.
 
 ## Refactor
 
@@ -46,3 +52,8 @@ Read the whole skill (SKILL.md plus every file it points at), then run these che
 ## Verify
 
 If the skill produces verifiable output, run it on 2–3 realistic prompts before and after the refactor and compare — the refactor should change the _process_, not degrade the output. If subjective, ask the user to review the diff instead.
+
+## Reference
+
+- [`create-skill`](../create-skill/SKILL.md) — the creation workflow, template, and review checklist this skill audits against
+- [writing-for-agents](../writing-for-agents/SKILL.md) — the writing levers every check here applies

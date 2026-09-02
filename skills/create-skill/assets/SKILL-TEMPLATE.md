@@ -7,13 +7,17 @@ description: What it does, in one imperative sentence. Use when <trigger branch 
 
 One or two sentences: what this skill makes repeatable, and which sibling file holds what (if any).
 
-## <First section — usually the workflow or the core rules>
+## Quick start
 
-- Imperative steps or flat reference rules.
-- Each step ends on a checkable completion criterion.
-- Explain the why, not just the what.
+Minimal working example — the fastest copy-pasteable path from zero to value.
 
-## <When to read a reference file>
+## Workflows
+
+Step-by-step processes with checklists for the common paths, imperative, each step ending on a checkable completion criterion. Split by branch into `##` sections, or into `references/` when only some runs take that path.
+
+## Advanced features
+
+Less common operations or branch-specific reference. Link out instead of inlining what only some runs need:
 
 Read [`references/<topic>.md`](references/<topic>.md) when <the branch that needs it>.
 

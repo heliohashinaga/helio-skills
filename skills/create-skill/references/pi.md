@@ -25,6 +25,18 @@ In `~/.pi/agent/skills/` and `.pi/skills/`, a bare `.md` file at the root with v
 
 Unknown fields are ignored. Most violations warn but still load; a missing `description` does not load. Name collisions across locations keep the first found.
 
+### Per-harness metadata (`agents/openai.yaml`)
+
+A skill may carry an `agents/openai.yaml` beside its `SKILL.md` with harness-specific UI metadata:
+
+```yaml
+interface:
+  display_name: "My Skill"
+  short_description: "One-liner for the skill picker"
+```
+
+**Pi ignores this file entirely** — it has no skill picker and never reads it. Its value is portability: Claude Code and Codex read it for their UIs, so a multi-harness skill ships one copy of the display metadata instead of duplicating it in prose. Only add it when the skill targets those harnesses too; a pi-only skill never needs it.
+
 ## Invocation
 
 - **Model-invoked** (default): name + description live in the system prompt as XML; the agent `read`s the full SKILL.md when the description matches — but models don't always do this, so descriptions carry the weight.

@@ -8,6 +8,8 @@ disable-model-invocation: true
 
 A skill is a folder with a `SKILL.md`: YAML frontmatter (`name`, `description`) plus Markdown instructions. The skill's job is to make a behaviour repeatable across runs — the agent takes the same _process_ every time, not the same output.
 
+Why a skill: it packages a repeatable process so the model runs it the same way every run. Reach for it when the behaviour is worth fixing; skip it for a one-off task, or when you cannot name the process being repeated.
+
 Read [`writing-for-agents`](../writing-for-agents/SKILL.md) first if available: it carries the levers (context pointers, the two loads, information hierarchy, leading words, pruning) that make the writing predictable. This skill carries the workflow: capture, draft, test, iterate.
 
 When the skill targets **pi**, read [`references/pi.md`](references/pi.md) for discovery locations, pi's frontmatter rules, `/skill:name` commands, and the symlink install pattern. When **auditing or refactoring** an existing skill rather than creating one, use the `improve-skill` skill instead.
@@ -33,9 +35,10 @@ skill-name/            # kebab-case, matches the name field
 └── assets/            # templates and files used in output (optional)
 ```
 
-- Keep `SKILL.md` lean — under ~500 lines. When material serves only some branches, push it to `references/` behind a context pointer that states when to read it.
+- Keep `SKILL.md` lean — under ~150 lines; treat 100 as the yellow flag. When only some branches need material, push it to `references/` behind a context pointer that states when to read it.
 - When several branches need the same deterministic operation (a transform, a scaffold, a validator), write it once in `scripts/` and point at it, instead of making every run reinvent it.
 - Organize references by variant when the skill spans domains (one file per framework/tool), so a run loads only its own branch.
+- A sibling markdown file in the skill folder (flat, `UPPER-KEBAB.md`, no subfolder) is the idiomatic home for a **single document with a rigid format** the body references wholesale — e.g. `MISSION-FORMAT.md`. Use it over prose in the body when the format is long or shared; the body then points at it with a relative link.
 
 ## Write the description
 
@@ -44,6 +47,16 @@ The description is the skill's only always-loaded pointer and its entire trigger
 - Imperative, starting with what it does, then "Use when..." with the concrete trigger branches.
 - Distinct branches only — synonyms of one branch are one branch written twice.
 - Slightly pushy beats undertriggering: name the adjacent phrasings the agent should catch even when the user never says the skill's name.
+
+Good vs bad description (the bad one gives the agent no way to tell this skill from any other):
+
+```markdown
+# Bad: "Helps with documents."
+
+# Good: "Extract text and tables from PDF files, fill forms, merge documents.
+#        Use when working with PDF files, or when the user mentions PDFs,
+#        forms, or document extraction."
+```
 
 ## Write the body
 
@@ -60,8 +73,19 @@ The description is the skill's only always-loaded pointer and its entire trigger
 4. Prune between iterations: every line pays context load, so delete what doesn't change behaviour versus the default.
 5. Repeat until feedback is empty or progress stalls.
 
+## Review checklist
+
+Before declaring the skill done, walk the draft through this:
+
+- [ ] Description includes distinct trigger branches ("Use when..."), not just what the skill does
+- [ ] `SKILL.md` under ~150 lines, split by branch into `references/`
+- [ ] No time-sensitive information that will go stale
+- [ ] Terminology consistent across the skill and with the writing levers
+- [ ] Concrete input/output examples for any fixed format the skill produces
+- [ ] References one level deep — no `references/` file that points at another
+
 ## Reference
 
-- [Matt Pocock — writing-for-agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents)
+- [Matt Pocock — writing-for-agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) — the source of truth for writing principles. (Formerly `writing-great-skills`; replaced the now-retired `write-a-skill`.)
 - [Anthropic — skill-creator](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md)
 - [agentskills.io — best practices](https://agentskills.io/skill-creation/best-practices)

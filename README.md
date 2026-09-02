@@ -57,7 +57,6 @@ Detects machine capacity and recommends the best orchestration strategy.
 | Skill | Description |
 |---|---|
 | **dotnet** | .NET/C# — `dotnet build`, xUnit, ASP.NET Core, EF Core, NuGet |
-| **java** | Java — Maven/Gradle, JUnit 5, src/main & src/test layout |
 | **python** | Python — pyproject.toml, uv, ruff, pytest, asyncio, src layout |
 | **rust** | Rust — Cargo, modules, Result/?`, Clippy, rustfmt |
 | **typescript** | TypeScript — strict config, ESM, feature-based modules, Zod |
@@ -65,7 +64,6 @@ Detects machine capacity and recommends the best orchestration strategy.
 
 **Links**:
 - [`skills/dotnet/SKILL.md`](skills/dotnet/SKILL.md)
-- [`skills/java/SKILL.md`](skills/java/SKILL.md)
 - [`skills/python/SKILL.md`](skills/python/SKILL.md)
 - [`skills/rust/SKILL.md`](skills/rust/SKILL.md)
 - [`skills/typescript/SKILL.md`](skills/typescript/SKILL.md)
@@ -111,6 +109,21 @@ End-to-end, visual and Storybook test conventions for coding agents.
 
 ---
 
+### Skill Authoring
+
+| Skill | Description |
+|---|---|
+| **writing-for-agents** | Universal levers for writing agent-consumed docs: context pointers, the two loads, information hierarchy, leading words, pruning |
+| **create-skill** | Workflow for creating a skill: capture intent, scaffold from template, draft, test, iterate (user-invoked: `/skill:create-skill`) |
+| **improve-skill** | Audit and refactor an existing skill against the writing levers (user-invoked: `/skill:improve-skill`) |
+
+**Links**:
+- [`skills/writing-for-agents/SKILL.md`](skills/writing-for-agents/SKILL.md)
+- [`skills/create-skill/SKILL.md`](skills/create-skill/SKILL.md)
+- [`skills/improve-skill/SKILL.md`](skills/improve-skill/SKILL.md)
+
+---
+
 ### Cross-Cutting
 
 | Skill | Description |
@@ -120,12 +133,15 @@ End-to-end, visual and Storybook test conventions for coding agents.
 | **docs** | README, ADR, runbooks, API documentation |
 | **speckit** | Spec Kit — spec-driven development workflow (`/speckit.*`) |
 | **clean-code** | Clean-code standards: naming, small functions, honest comments; formatting left to formatters |
+| **langgraph** | LangGraph 1.x — state graphs, reducers, checkpointing, HITL, prebuilt agents |
 
 **Links**:
 - [`skills/gitmoji/SKILL.md`](skills/gitmoji/SKILL.md)
 - [`skills/security/SKILL.md`](skills/security/SKILL.md)
 - [`skills/docs/SKILL.md`](skills/docs/SKILL.md)
+- [`skills/speckit/SKILL.md`](skills/speckit/SKILL.md)
 - [`skills/clean-code/SKILL.md`](skills/clean-code/SKILL.md)
+- [`skills/langgraph/SKILL.md`](skills/langgraph/SKILL.md)
 
 ---
 

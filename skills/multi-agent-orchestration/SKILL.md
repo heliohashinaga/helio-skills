@@ -3,7 +3,10 @@ name: multi-agent-orchestration
 description: |
   Safe orchestration patterns for pi-subagents 0.43.0: workflowScript, async runs,
   one writer per cwd/worktree, explicit acceptance, and fresh-context review.
-  Use for delegated implementation, staged workflows, or review fan-out.
+  Use for delegated implementation, staged workflows, or review fan-out. Reach for
+  this whenever work splits into parallel subagents — "spawn agents", "run these
+  in parallel", "delegate this", or a multi-step pipeline where each stage feeds
+  the next — even if the user never says "orchestrate".
 ---
 
 # Multi-Agent Orchestration
@@ -80,7 +83,7 @@ subagent({ action: "status", id: "run-id" });
 subagent({ action: "stop", id: "run-id" });
 ```
 
-## Control surface (0.42.1 → 0.43.0)
+## Control surface (0.43+)
 
 - Call `subagent({ action: "list" })` first and use only executable/non-disabled
   agents.

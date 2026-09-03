@@ -25,6 +25,9 @@ Read the whole skill (SKILL.md plus every file it points at), then run these che
 **Body:**
 - **No-ops**: sentence by sentence — does this change behaviour versus the model's default? Delete what fails.
 - **Sediment**: is every line still relevant to what the skill does today, or are stale layers settling?
+- **Time-sensitive**: any version pins, dates, or "as of X" that will go stale predictably? Flag them for a deliberate pin or a soft bound.
+- **Terminology**: is the skill's vocabulary consistent throughout — the same concept named the same way everywhere, and aligned with the writing levers it cites?
+- **Examples**: does the skill include concrete input/output examples for any fixed format it produces? A format described but never demonstrated is under-supplied.
 - **Duplication**: is any meaning stated in two places (within the skill, or restating the environment — `package.json`, `--help`, directory layout)? Keep one source of truth; cache only what the environment cannot confess.
 - **Negations**: prohibitions without a paired positive target? Reframe to what to do.
 - **Sprawl**: is SKILL.md carrying reference only some branches need? Push it behind a pointer. Use the line-count target from `create-skill` as the fatigue signal, not a number restated here.

@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# NOTE: Customize CONF_OPTS and file paths for your project
-# Example: CONF_OPTS="--no-conf --file [YOUR_JOURNAL_FILE]"
+# Journal resolution: $JOURNAL_FILE env wins, else ./finance.journal (repo root)
 
 # Run all hledger validation checks
 
 # Use --no-conf --file to avoid duplicate reads and config conflicts
 # This is the safest approach for automation scripts
-CONF_OPTS="--no-conf --file finance.journal"
+CONF_OPTS="--no-conf --file ${JOURNAL_FILE:-finance.journal}"
 
 # Color codes
 RED='\033[0;31m'
@@ -23,6 +22,8 @@ echo "  hledger Validation Suite"
 echo "═══════════════════════════════════════════"
 echo ""
 
+FAILS=0
+
 run_check() {
     local name="$1"
     local cmd="$2"
@@ -32,6 +33,7 @@ run_check() {
         return 0
     else
         echo -e "$FAIL"
+        FAILS=$((FAILS + 1))
         return 1
     fi
 }
@@ -62,5 +64,10 @@ hledger $CONF_OPTS stats
 
 echo ""
 echo "═══════════════════════════════════════════"
+if [ "$FAILS" -ne 0 ]; then
+    echo "  Validation FAILED ($FAILS check(s))"
+    echo "═══════════════════════════════════════════"
+    exit 1
+fi
 echo "  Validation complete"
 echo "═══════════════════════════════════════════"

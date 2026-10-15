@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
-# NOTE: Customize CONF_OPTS and file paths for your project
-# Example: CONF_OPTS="--no-conf --file [YOUR_JOURNAL_FILE]"
+# Journal resolution: $JOURNAL_FILE env wins, else ./finance.journal (repo root)
 
 # Generate a monthly financial report
 # Usage: ./monthly-report.sh [YYYY-MM]
 
 MONTH="${1:-$(date +%Y-%m)}"
-# Default config file (can be overridden by setting CONF env var)
-CONF_OPTS="--no-conf --file finance.journal"
-MONTH_NUM="${MONTH##*-}"
+CONF_OPTS="--no-conf --file ${JOURNAL_FILE:-finance.journal}"
 
-# Determine next month for end date
-NEXT_MONTH=$(date -d "$YEAR-$MONTH_NUM-01 +1 month" +%Y-%m-%d 2>/dev/null || date -v+1m -j -f "%Y-%m-%d" "$YEAR-$MONTH_NUM-01" "+%Y-%m-%d" 2>/dev/null || echo "$YEAR-$((10#$MONTH_NUM + 1))-01")
+# Determine next month for end date (GNU date; git-bash/MSYS included)
+NEXT_MONTH=$(date -d "$MONTH-01 +1 month" +%F)
 
 echo "═══════════════════════════════════════════"
 echo "  Monthly Report: $MONTH"

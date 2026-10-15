@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
-# NOTE: Customize CONF_OPTS and file paths for your project
-# Example: CONF_OPTS="--no-conf --file [YOUR_JOURNAL_FILE]"
+# Journal resolution: $JOURNAL_FILE env wins, else ./finance.journal (repo root)
 
 # Import CSV from a bank using hledger rules
-# Usage: ./import-csv.sh <csv-file> [<rules-file>]
+# Usage: ./import-csv.sh [--yes] <csv-file> [<rules-file>]
 # If rules-file is omitted, hledger will look for CSVFILE.rules in the same directory
+# --yes (or AUTO_YES=1) skips the confirm prompt — required for agent/non-interactive runs
+
+AUTO_YES="${AUTO_YES:-0}"
+if [ "${1:-}" = "--yes" ] || [ "${1:-}" = "-y" ]; then
+    AUTO_YES=1
+    shift
+fi
 
 CSV="$1"
-CONF_OPTS="--no-conf --file finance.journal"
+JOURNAL="${JOURNAL_FILE:-finance.journal}"
+RULES="$2"
 if [ -z "$CSV" ]; then
     echo "Usage: $0 <csv-file> [<rules-file>]"
     echo ""
@@ -32,9 +39,9 @@ if [ -n "$RULES" ]; then
         echo "Rules file not found: $RULES"
         exit 1
     fi
-    IMPORT_CMD="hledger --conf \"$CONF\" import \"$CSV\" --rules-file \"$RULES\""
+    IMPORT_CMD=(hledger --no-conf --file "$JOURNAL" import "$CSV" --rules-file "$RULES")
 else
-    IMPORT_CMD="hledger --conf \"$CONF\" import \"$CSV\""
+    IMPORT_CMD=(hledger --no-conf --file "$JOURNAL" import "$CSV")
 fi
 
 echo "═══════════════════════════════════════════"
@@ -46,7 +53,7 @@ echo "CSV file:  $CSV"
 echo ""
 
 # Dry run
-$IMPORT_CMD --dry-run
+"${IMPORT_CMD[@]}" --dry-run
 
 DRYRUN_STATUS=$?
 
@@ -62,17 +69,22 @@ echo "  Dry-run completed successfully"
 echo "═══════════════════════════════════════════"
 echo ""
 echo "To import these transactions, run:"
-[ -n "$RULES" ] && echo "  $IMPORT_CMD" || echo "  $IMPORT_CMD"
+echo "  ${IMPORT_CMD[*]}"
 echo ""
-read -p "Import now? [y/N] " CONFIRM
+if [ "$AUTO_YES" = "1" ]; then
+    CONFIRM="y"
+else
+    read -p "Import now? [y/N] " CONFIRM
+fi
 
 if [ "$CONFIRM" = "y" ] || [ "$CONFIRM" = "Y" ]; then
     echo ""
     echo "Importing..."
-    $IMPORT_CMD
+    "${IMPORT_CMD[@]}"
     echo ""
     echo "Import complete. Running validation..."
-    hledger $CONF_OPTS check
+    hledger --no-conf --file "$JOURNAL" check
+    echo "Validation finished."
 else
     echo "Import cancelled."
 fi

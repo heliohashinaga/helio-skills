@@ -6,10 +6,10 @@ A collection of production-grade skills, agents, and extensions for [pi](https:/
 
 ```
 pi-agent-skills/
+├── install.sh       # Install/refresh skills into ~/.pi/agent/skills
 ├── skills/          # Reusable capabilities loaded by pi
 ├── agents/          # Read-only subagent definitions
-├── extensions/      # pi extensions (commands, renderers, lifecycle hooks)
-└── docs/            # ADR, runbooks, documentation skill
+└── extensions/      # pi extensions (commands, renderers, lifecycle hooks)
 ```
 
 | Component | Purpose | Example |
@@ -36,19 +36,6 @@ Safe orchestration patterns for pi-subagents: workflowScript, async runs, one wr
 
 **Links**:
 - [`skills/multi-agent-orchestration/SKILL.md`](skills/multi-agent-orchestration/SKILL.md)
-
----
-
-#### **Orchestration Advisor**
-Detects machine capacity and recommends the best orchestration strategy.
-
-- ✅ Detect RAM, CPU, swap, disk
-- ✅ Recommend sequential / hybrid / parallel
-
-**Use when**: You need guidance on orchestration aggressiveness.
-
-**Links**:
-- [`skills/orchestration-advisor/SKILL.md`](skills/orchestration-advisor/SKILL.md)
 
 ---
 
@@ -134,6 +121,7 @@ End-to-end, visual and Storybook test conventions for coding agents.
 | **speckit** | Spec Kit — spec-driven development workflow (`/speckit.*`) |
 | **clean-code** | Clean-code standards: naming, small functions, honest comments; formatting left to formatters |
 | **langgraph** | LangGraph 1.x — state graphs, reducers, checkpointing, HITL, prebuilt agents |
+| **show-me** | Explain visually: diagrams, call trees, UI flows as focused HTML artifacts |
 
 **Links**:
 - [`skills/gitmoji/SKILL.md`](skills/gitmoji/SKILL.md)
@@ -142,15 +130,17 @@ End-to-end, visual and Storybook test conventions for coding agents.
 - [`skills/speckit/SKILL.md`](skills/speckit/SKILL.md)
 - [`skills/clean-code/SKILL.md`](skills/clean-code/SKILL.md)
 - [`skills/langgraph/SKILL.md`](skills/langgraph/SKILL.md)
+- [`skills/show-me/SKILL.md`](skills/show-me/SKILL.md)
 
 ---
 
 ### Finance
 
 #### **hledger**
-hledger accounting commands for personal/small business finances.
+hledger CLI data layer (journals, CSV import, reports, validation).
 
-- ✅ Balance, register, incomestatement, cashflow, balancesheet
+- ✅ Slim SKILL.md + `references/` (setup, commands, import, journal, queries, troubleshooting)
+- ✅ Scripts with real exit codes and `--yes` for agents
 
 **Links**:
 - [`skills/hledger/SKILL.md`](skills/hledger/SKILL.md)
@@ -207,7 +197,7 @@ Detects machine capacity and recommends orchestration strategy.
 - ✅ Integration with devloop orchestration decisions
 
 **Links**:
-- [`extensions/orchestration-advisor/README.md`](extensions/orchestration-advisor/README.md)
+- [`extensions/orchestration-advisor/`](extensions/orchestration-advisor/)
 
 ---
 
@@ -215,14 +205,10 @@ Detects machine capacity and recommends orchestration strategy.
 
 ### Install Skills
 
-Copy or symlink to pi's skills directory:
+One-way sync (repo is source of truth). Non-repo skills already installed are kept:
 
 ```bash
-# Install all skills
-ln -s $(pwd)/skills/* ~/.pi/agent/skills/
-
-# Install specific skill
-ln -s $(pwd)/skills/nextjs ~/.pi/agent/skills/nextjs
+bash install.sh
 ```
 
 ### Install Extensions

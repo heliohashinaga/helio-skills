@@ -22,3 +22,8 @@ coverage/
 Thumbs.db
 .idea/
 *.swp
+
+# Python (regenerable bytecode)
+__pycache__/
+*.pyc
+*.pyo

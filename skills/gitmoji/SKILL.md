@@ -1,11 +1,6 @@
 ---
 name: gitmoji
-description: |
-  Gitmoji + Conventional Commits convention for commit messages and PR titles.
-  Use whenever writing, reviewing or integrating commit messages and PR titles:
-  format `:emoji: type(scope): subject`. Provides the emoji-to-intent mapping
-  (feature, fix, refactor, docs, tests, config/tooling, CI, performance,
-  architecture, dependency, DB migration, removal, security, release).
+description: "Format commit messages and PR titles with Gitmoji."
 ---
 
 # Gitmoji Convention Skill

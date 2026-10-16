@@ -1,12 +1,6 @@
 ---
 name: design-system
-description: |
-  Generic design-system / accessible-UI skill, reusable across projects. Covers
-  token-based styling, accessible shared primitives, Storybook story conventions
-  (default/loading/error/edge) with a11y testing, and visual regression. Project
-  conventions (a repo's tokens, component library, localization locales) override
-  this generic guidance. Use when touching shared UI, design tokens, Tailwind
-  classes, stories, a11y/contrast/keyboard, or visual regression.
+description: "Use when styling shared UI, tokens, a11y or stories."
 ---
 
 # Design-system skill (generic)

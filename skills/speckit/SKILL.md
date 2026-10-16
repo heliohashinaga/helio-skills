@@ -1,18 +1,11 @@
 ---
 name: speckit
-description: |
-  Spec Kit — the open-source spec-driven development (SDD) toolkit for AI
-  coding agents. Use when running or explaining the `/speckit.*` workflow:
-  constitution, specify, clarify, plan, checklist, tasks, analyze, implement,
-  converge. Covers installation via the specify-cli (uv), the artifact files
-  (constitution.md, spec.md, plan.md, tasks.md), the quality-gate loop between
-  specify/plan/tasks and analyze/converge, agent integrations (slash commands
-  vs `$speckit-*` skills), and feature tracking via `.specify/feature.json`.
-  The name most commonly refers to the GitHub spec-kit toolkit (not Spekit the
-  sales-enablement product or PySpecKit the astronomy library).
+description: "Run Spec Kit's spec-driven `/speckit.*` workflow."
 ---
 
 # Spec Kit Skill
+
+"Spec Kit" here means the GitHub spec-kit toolkit — not Spekit (sales enablement) or PySpeckit (astronomy).
 
 Guidance for **Spec-Driven Development (SDD)** with **Spec Kit** — an
 open-source toolkit from GitHub that turns natural-language requirements into

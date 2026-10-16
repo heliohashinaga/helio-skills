@@ -1,16 +1,11 @@
 ---
 name: playwright
-description: >
-  Playwright end-to-end, visual and Storybook test conventions for coding
-  agents. Use when writing, running or verifying Playwright specs (`.spec.ts`),
-  configuring `playwright.config.ts`, or producing E2E/visual tests for any web
-  app. Covers running against a production build (not dev mode), deterministic
-  fakes (no live AI), privacy, accessibility, parallelism, and the agentic
-  Playwright features. A repo's own AGENTS.md / project skill overrides this
-  generic guidance.
+description: "Write and run Playwright E2E and visual tests."
 ---
 
 # Playwright E2E conventions
+
+A repo's own AGENTS.md or project skill overrides this generic guidance.
 
 Follow these when creating or running Playwright tests.
 

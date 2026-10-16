@@ -1,11 +1,6 @@
 ---
 name: typescript
-description: |
-  TypeScript development skill — write, build, test and refactor TypeScript
-  for Node.js / browser apps: strict tsconfig, ESM/NodeNext, feature-based
-  modular structure, tsc/tsx, ESLint and Zod validation. Use when tasks involve
-  .ts/.tsx files, tsconfig.json, TypeScript type design, Node ESM modules, or
-  building/running TS with tsc/tsx.
+description: "Write, build and test strict TypeScript with tsc and ESM."
 ---
 
 # TypeScript Skill

@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: Create, edit, or improve pi/agent skills (SKILL.md) — capture intent, draft from the template, test, iterate.
+description: "Create, edit or improve a SKILL.md — draft, test, iterate."
 disable-model-invocation: true
 ---
 

@@ -1,14 +1,6 @@
 ---
 name: langgraph
-description: |
-  Develop long-running, stateful agents and workflows with LangGraph: state
-  graphs (StateGraph/MessagesState), nodes and edges, conditional routing,
-  state with reducers (Annotated, add_messages), checkpointing and memory
-  (threads, InMemorySaver, Postgres), human-in-the-loop (interrupt/Command),
-  streaming, time travel, and prebuilt agents (create_react_agent, ToolNode).
-  Use when writing, debugging or refactoring code that imports `langgraph`,
-  builds graphs with StateGraph or create_react_agent, uses interrupt()/Command,
-  configures a checkpointer/thread_id, or adds memory and persistence to agents.
+description: "Build stateful agents and workflows with LangGraph."
 ---
 
 # LangGraph Skill

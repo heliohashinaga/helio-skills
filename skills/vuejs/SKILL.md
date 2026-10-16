@@ -1,10 +1,6 @@
 ---
 name: vuejs
-description: |
-  Vue.js 3 development skill — build, refactor and test Vue 3 apps with the
-  Composition API, <script setup>, Vite, Pinia, Vue Router and Vitest. Use
-  when tasks involve .vue SFCs, Vue components, Vite config, Pinia stores,
-  Vue Router, or Vue testing with Vitest/@vue/test-utils.
+description: "Build and test Vue 3 apps with Composition API and Vite."
 ---
 
 # Vue.js 3 Skill

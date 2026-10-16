@@ -1,10 +1,6 @@
 ---
 name: rust
-description: |
-  Rust development skill — write, build, test and refactor Rust with Cargo,
-  modules, the borrow checker, error handling (Result/?), Clippy and rustfmt.
-  Use when tasks involve .rs files, `cargo build`/`cargo test`/`cargo clippy`,
-  crates/Cargo.toml, or Rust workspaces.
+description: "Write, build and test Rust with Cargo, Clippy and rustfmt."
 ---
 
 # Rust Skill

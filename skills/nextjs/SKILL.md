@@ -1,12 +1,6 @@
 ---
 name: nextjs
-description: |
-  Generic Next.js (App Router) + React 19 skill, reusable across projects. Covers
-  RSC vs client components, Route Handlers, Server Actions, the server-only
-  boundary, i18n, lazy loading, and a tiered testing approach. Project-specific
-  conventions (a repo's own AGENTS.md, a design-system skill, privacy/safety
-  rules) override this generic guidance. Use when touching app/, features/, lib/
-  or tests in a Next.js repo.
+description: "Build Next.js App Router + React 19 apps with RSC actions."
 ---
 
 # Next.js skill (generic)

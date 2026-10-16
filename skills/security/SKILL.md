@@ -1,10 +1,6 @@
 ---
 name: security
-description: |
-  Security review skill — run a security pass on code, diffs and infra: OWASP
-  code-review checklist, secret scanning, dependency/SCA audit, SAST, SSRF and
-  authz checks, and gates for AI-generated code. Use when reviewing changes for
-  vulnerabilities, auditing a repo, or enforcing security before merge.
+description: "Review code and diffs for OWASP, secret and authz issues."
 ---
 
 # Security Review Skill

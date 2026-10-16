@@ -1,10 +1,6 @@
 ---
 name: python
-description: |
-  Python development skill — write, build, test and refactor Python following
-  modern 2025 practices: pyproject.toml, uv, ruff, type checking, pytest, async
-  asyncio and the src layout. Use when tasks involve .py files, packages,
-  venvs, pip/uv/poetry, ruff, pytest, or async Python code.
+description: "Write, build and test Python with uv, ruff and pytest."
 ---
 
 # Python Skill

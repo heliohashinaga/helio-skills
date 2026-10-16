@@ -1,12 +1,6 @@
 ---
 name: clean-code
-description: |
-  Write, review and refactor code to clean-code standards: readable, maintainable
-  naming, small single-purpose functions, and honest comments. Distinguishes the
-  deterministic *formatting* layer (delegated to formatters like Black/ruff) from
-  the judgment-based *semantic* layer (naming, cohesion, dead-code removal that an
-  LLM/reviewer must judge). Use when writing or reviewing functions, naming
-  identifiers, removing redundant comments, or cleaning generated/refactored code.
+description: "Apply clean-code standards when writing or reviewing code."
 ---
 
 # Clean Code Skill

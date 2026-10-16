@@ -1,7 +1,6 @@
 ---
 name: show-me
-description: Help the user understand the current topic visually with concise diagrams, code-shape sketches, and focused HTML artifacts. Use when the user asks to draw, diagram, sketch, visualize, or "show" something — architecture, a call tree, a component tree, a refactor layout, a UI flow, or a comparison — even if they never say "diagram". Prefer this over long prose explanations when a visual would make the point faster.
-
+description: "Explain visually — diagrams, code sketches, HTML artifacts."
 ---
 
 Help the user understand the current topic of conversation visually. Skip the preamble and keep prose brief. Pick the smallest view that makes the key point clear.

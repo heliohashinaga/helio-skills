@@ -1,10 +1,6 @@
 ---
 name: dotnet
-description: |
-  .NET / C# development skill — write, build, test and refactor C# code using
-  the dotnet CLI, xUnit/NUnit, ASP.NET Core (Minimal API), EF Core and NuGet.
-  Use when tasks involve C# files (.cs, .csproj, .sln), .NET projects,
-  `dotnet build`/`dotnet test`, NuGet packages, or ASP.NET Core / EF Core code.
+description: "Write, build and test C#/.NET code with the dotnet CLI."
 ---
 
 # .NET / C# Skill

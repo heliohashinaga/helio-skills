@@ -1,6 +1,6 @@
 ---
 name: improve-skill
-description: Audit and refactor an existing skill — find variance bugs, prune dead load, sharpen triggers, fix structure.
+description: "Audit and refactor an existing skill — fix triggers first."
 disable-model-invocation: true
 ---
 

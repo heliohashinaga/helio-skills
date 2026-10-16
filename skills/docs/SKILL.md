@@ -1,11 +1,6 @@
 ---
 name: docs
-description: |
-  Documentation skill — write, update and audit project documentation: README,
-  AGENTS.md/CONTRIBUTING, Architecture Decision Records (ADR), API/OpenAPI docs,
-  architecture diagrams (C4 as-code), runbooks, and onboarding guides. Use when
-  tasks involve documentation files, README/ADR/API-doc/runbook/changelog work,
-  or ensuring docs stay in sync with code.
+description: "Write, update and audit README, ADR, API and runbook docs."
 ---
 
 # Documentation Skill

@@ -1,12 +1,6 @@
 ---
 name: multi-agent-orchestration
-description: |
-  Safe orchestration patterns for pi-subagents 0.43.0: workflowScript, async runs,
-  one writer per cwd/worktree, explicit acceptance, and fresh-context review.
-  Use for delegated implementation, staged workflows, or review fan-out. Reach for
-  this whenever work splits into parallel subagents — "spawn agents", "run these
-  in parallel", "delegate this", or a multi-step pipeline where each stage feeds
-  the next — even if the user never says "orchestrate".
+description: "Run parallel subagents safely — one writer, fresh review."
 ---
 
 # Multi-Agent Orchestration

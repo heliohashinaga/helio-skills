@@ -42,7 +42,7 @@ interface:
 - **Model-invoked** (default): name + description live in the system prompt as XML; the agent `read`s the full SKILL.md when the description matches — but models don't always do this, so descriptions carry the weight.
 - **User-forced**: `/skill:<name>` loads it explicitly; arguments are appended as `User: <args>`. Requires `enableSkillCommands` (on by default; toggle in `/settings`).
 
-## Repo layout used in pi-agent-skills
+## Repo layout used in helio-skills
 
 - One folder per skill under `skills/`, symlinked into `~/.pi/agent/skills/`.
 - Sibling cross-references use relative paths (`../writing-for-agents/SKILL.md`), valid from either location since the symlink preserves the layout.

@@ -5,7 +5,7 @@ A collection of production-grade skills, agents, and extensions for [pi](https:/
 ## 📁 Structure
 
 ```
-pi-agent-skills/
+helio-skills/
 ├── install.sh       # Install/refresh skills into ~/.pi/agent/skills
 ├── skills/          # Reusable capabilities loaded by pi
 ├── agents/          # Read-only subagent definitions

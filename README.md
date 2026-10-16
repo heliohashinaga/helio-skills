@@ -134,19 +134,6 @@ End-to-end, visual and Storybook test conventions for coding agents.
 
 ---
 
-### Finance
-
-#### **hledger**
-hledger CLI data layer (journals, CSV import, reports, validation).
-
-- ✅ Slim SKILL.md + `references/` (setup, commands, import, journal, queries, troubleshooting)
-- ✅ Scripts with real exit codes and `--yes` for agents
-
-**Links**:
-- [`skills/hledger/SKILL.md`](skills/hledger/SKILL.md)
-
----
-
 ## 🤖 Agents
 
 Read-only subagent definitions used by extensions for delegated work.

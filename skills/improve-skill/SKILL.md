@@ -17,6 +17,7 @@ The rubric below is the audit's list of questions; `create-skill` carries the cu
 Read the whole skill (SKILL.md plus every file it points at), then run these checks. Each is a question; a "no" is a finding.
 
 **Trigger (the description):**
+- Mechanical rules first — length (60 chars), single-line plain scalar, quoting, strict-YAML validity: the audit list in `create-skill`'s **Hard rules**. A block scalar or an over-long description never fires; content checks below are moot until these pass.
 - Does the description state what the skill does _and_ list its trigger branches? "All when-to-use lives in the description" — check the body isn't carrying trigger information the description lacks.
 - Are the branches distinct, or synonyms of one branch written twice?
 - Is it pushy enough? Undertriggering is the default failure — would the agent catch the adjacent phrasings a real user types?

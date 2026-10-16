@@ -36,7 +36,7 @@ skill-name/            # kebab-case, matches the name field
 ```
 
 - Keep `SKILL.md` lean — under ~150 lines; treat 100 as the yellow flag. When only some branches need material, push it to `references/` behind a context pointer that states when to read it.
-- When several branches need the same deterministic operation (a transform, a scaffold, a validator), write it once in `scripts/` and point at it, instead of making every run reinvent it.
+- When several branches need the same deterministic operation (a transform, a scaffold, a validator), write it once in `scripts/` and point at it, instead of making every run reinvent it. Scripts carry their own rules — agent-runnable, verification, and what to fix when you move one: read [`references/scripts.md`](references/scripts.md) before writing or moving a script.
 - Organize references by variant when the skill spans domains (one file per framework/tool), so a run loads only its own branch.
 - A sibling markdown file in the skill folder (flat, `UPPER-KEBAB.md`, no subfolder) is the idiomatic home for a **single document with a rigid format** the body references wholesale — e.g. `MISSION-FORMAT.md`. Use it over prose in the body when the format is long or shared; the body then points at it with a relative link.
 
@@ -57,6 +57,30 @@ Good vs bad description (the bad one gives the agent no way to tell this skill f
 #        Use when working with PDF files, or when the user mentions PDFs,
 #        forms, or document extraction."
 ```
+
+### Hard rules (the agent index)
+
+Mechanical, not stylistic. Two agents read these skills (Hermes and Pi), and one
+description serves both:
+
+- **Maximum 60 characters total.** The Hermes skill index truncates past that, so
+  a longer description loses its routing tail. Count it, don't eyeball it.
+- **One line, plain scalar.** Never `description: |` or `description: >` — a
+  block scalar defeats the length/index handling that expects one line.
+- **Double-quote the value if it contains a colon**, otherwise the YAML is
+  invalid. Watch the failure mode: Hermes' own loader parses an unquoted colon
+  leniently and still lists the skill, while Pi and other strict YAML parsers
+  silently drop it from the index with no error shown.
+- **Validate with a strict parser** before calling the skill healthy:
+  `python -c "import yaml,sys; print(yaml.safe_load(open(sys.argv[1]).read().split('---')[1]))" SKILL.md`.
+  Loading it in the agent that authored it proves nothing.
+- **When shortening drops information** the old description carried (a
+  disambiguation, a version floor, a behaviour gate), move it into the body's
+  opening line — the description is the trigger, the body is where the detail
+  survives.
+- **Pi's own limit is looser** (max 1024 chars) but the 60-char cap is the house
+  rule for every library on this machine. Pi-specific frontmatter details live in
+  [`references/pi.md`](references/pi.md).
 
 ## Write the body
 

@@ -1,4 +1,4 @@
-# Pi Agent Skills
+# Helio Skills
 
 A collection of production-grade skills, agents, and extensions for [pi](https://github.com/earendil-works/pi) — a coding agent harness for parallel AI-assisted development.
 

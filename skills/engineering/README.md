@@ -8,8 +8,6 @@ The upstream versions declare a hard dependency on a run-once, manually-invoked 
 
 These variants remove that dependency. The per-repo configuration (issue tracker, label vocabulary, domain docs) is resolved inline — **the local-markdown tracker by default**, overridable in `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md` — so each skill runs with no setup step and installs on its own. The seed config files live in the repo at [`templates/agent-config/`](../templates/agent-config/) (issue-tracker GitHub / GitLab / local, `triage-labels.md`, `domain.md`).
 
-Content copied in rather than pointed at is what makes a standalone install possible; each adapted skill carries a `CREDITS.md` with the attribution.
-
 ## Adapted skills
 
 - `triage` — roles, state machine, flow, `AGENT-BRIEF.md`, `OUT-OF-SCOPE.md`

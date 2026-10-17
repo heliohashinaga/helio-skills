@@ -1,8 +1,9 @@
 # Scripts, verification, and editing
 
 Read when **creating or changing** a skill's scripts, when **moving** a script, or
-when **verifying** that a refactor hasn't broken anything. These are authorship rules —
-the library inventory and dedup live in the agent's local store.
+when **verifying** a refactor hasn't broken anything. These are authorship rules —
+the library inventory and dedup are handled by the `skills-management` skill in the
+agent's local store.
 
 ## Agent-runnable scripts
 

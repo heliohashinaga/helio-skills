@@ -56,7 +56,7 @@ Languages, frameworks, and code-quality capabilities.
 | **to-tickets** | Break a plan or spec into tracer-bullet tickets with blocking edges |
 | **wayfinder** | Plan work too big for one session as a map of decision tickets |
 
-**Links**: [`skills/engineering/`](skills/engineering/)
+**Links**: [`skills/engineering/`](skills/engineering/) · [`skills/engineering/README.md`](skills/engineering/README.md) (upstream sources)
 
 ---
 

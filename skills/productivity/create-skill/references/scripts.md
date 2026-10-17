@@ -1,56 +1,52 @@
-# Scripts, verificação e edição
+# Scripts, verification, and editing
 
-Leia ao **criar ou alterar** scripts de uma skill, ao **mover** um script de
-lugar, ou ao **verificar** se um refactor não quebrou nada. São regras de
-autoria — o inventário e a dedup da biblioteca ficam no store local do agente.
+Read when **creating or changing** a skill's scripts, when **moving** a script, or
+when **verifying** that a refactor hasn't broken anything. These are authorship rules —
+the library inventory and dedup live in the agent's local store.
 
-## Scripts executáveis por agente
+## Agent-runnable scripts
 
-- Sem prompt interativo sem bypass (`--yes`/env): agente trava em `read -p`.
-- Saia com código diferente de zero em falha — validador que sempre sai 0
-  esconde quebra real de quem chama por cron.
-- Monte comandos de shell como **array**, não string interpolada: caminho de
-  usuário traz espaço e acento que quebram expansão sem aspas.
-- Quando o script ganha flag ou muda uso, atualize as linhas de uso no `SKILL.md`
-  e os ponteiros em `references/` **no mesmo lote** — uso obsoleto roteia o
-  agente para flag que não existe mais.
-- Skill sem `scripts/` ainda precisa de fluxo executável: descreva a execução
-  conversacional (que consultas rodar, que julgamento aplicar, como é a saída) e
-  **nunca** documente comando fantasma tipo `./skill` que não aponta para nada.
-- Quando scripts irmãos copiam o mesmo parser ou formatador, extraia um módulo
-  compartilhado **da skill base** (import por caminho relativo entre irmãos, para
-  as cópias seguirem funcionando) e re-rode um comando real por consumidor,
-  comparando antes/depois — a contagem tem de bater exatamente com a ferramenta
-  autoritativa.
+- No interactive prompt without a bypass (`--yes` / env): the agent hangs on `read -p`.
+- Exit with a non-zero code on failure — a validator that always exits 0 hides the real
+  break from whatever called it via cron.
+- Build shell commands as an **array**, not an interpolated string: a user's path brings
+  spaces and accents that break unquoted expansion.
+- When the script gains a flag or changes usage, update the usage lines in `SKILL.md`
+  and the pointers in `references/` **in the same pass** — stale usage routes the agent
+  to a flag that no longer exists.
+- A skill without `scripts/` still needs an executable flow: describe the conversational
+  execution (what queries to run, what judgement to apply, what the output looks like) and
+  **never** document a phantom command like `./skill` that points at nothing.
+- When sibling scripts share the same parser or formatter, extract a shared module in
+  **the base skill** (relative import between siblings, so the copies keep working) and
+  re-run a real command per consumer, comparing before/after — the count must match the
+  authoritative tool exactly.
 
-## Documentação vs implementação
+## Documentation vs implementation
 
-- Quando a doc descreve flag ou subcomando que a implementação não tem, **corte a
-  doc para a realidade** por padrão. Implementar a superfície que falta é feature
-  nova, com risco próprio (ex.: um `--apply` de reconciliação escreve no razão) e
-  precisa de aprovação separada. Nunca deixe um comando documentado que falha.
+- When the doc describes a flag or subcommand the implementation doesn't have, **trim the
+  doc to reality** by default. Implementing the missing surface is a new feature, with its
+  own risk (e.g. a reconciliation `--apply` writes to the ledger), and needs separate
+  approval. Never leave a documented command that fails.
 
-## Verificação (o passo que costuma ser pulado)
+## Verification (the step usually skipped)
 
-- Verifique a **saída** contra a fonte autoritativa, não só o código de saída:
-  `exit 0` com zeros ou vazios é a forma de falha mais comum (include não
-  parseado, filtro de sinal invertido). Confirme um número real contra o
-  relatório da própria ferramenta antes de confiar em qualquer refactor.
-- O mesmo vale para busca com **zero resultados**: lista vazia não é prova de
-  ausência. Antes de declarar um arquivo, skill ou símbolo como não referenciado
-  (ou seguro de apagar), re-rode o check por um segundo método — caminhada
-  decodificada, outra ferramenta, revisão explícita — e confirme o mesmo zero,
-  porque uma busca que não casa nada em silêncio (escopo errado, encoding não
-  decodificado, forma de caminho que a ferramenta rejeita) inverte a recomendação
-  de manter para apagar.
+- Verify the **output** against the authoritative source, not just the exit code:
+  `exit 0` with zeros or blanks is the most common failure mode (unparsed include,
+  inverted signal filter). Confirm a real number against the tool's own report before
+  trusting any refactor.
+- The same applies to a search with **zero results**: an empty list is not proof of
+  absence. Before declaring a file, skill, or symbol unreferenced (or safe to delete),
+  re-run the check by a second method — decoded walk, another tool, explicit review —
+  and confirm the same zero, because a search that matches nothing silently (wrong scope,
+  undecoded encoding, path form the tool rejects) flips the keep recommendation to delete.
 
-## Mover ou editar um script
+## Moving or editing a script
 
-- Ao mover um script, conserte as suposições de profundidade que ele carrega
-  (`Path(__file__).parent*N`, nomes relativos ao CWD) — elas codificam a posição
-  antiga e resolvem para o diretório errado em silêncio depois da mudança.
-  Resolva a raiz do projeto por env-com-fallback-de-CWD e re-rode a partir do
-  diretório de trabalho real, confirmando comportamento idêntico ao de antes.
-- Prefira `patch` para edição pequena de `SKILL.md`: o `write_file` recusa a
-  sobrescrita depois de qualquer leitura paginada, então cada edição pequena
-  custa uma releitura inteira.
+- When moving a script, fix the depth assumptions it carries
+  (`Path(__file__).parent*N`, names relative to CWD): they encode the old position and
+  resolve to the wrong directory silently after the move. Resolve the project root via
+  env-with-CWD-fallback and re-run from the real working directory, confirming identical
+  behavior to before.
+- Prefer `patch` for small edits to `SKILL.md`: `write_file` refuses the overwrite after
+  any paginated read, so every small edit costs a full re-read.

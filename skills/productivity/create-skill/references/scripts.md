@@ -2,8 +2,7 @@
 
 Leia ao **criar ou alterar** scripts de uma skill, ao **mover** um script de
 lugar, ou ao **verificar** se um refactor não quebrou nada. São regras de
-autoria — o inventário e a deduplicação da biblioteca ficam no
-`skills-management`.
+autoria — o inventário e a dedup da biblioteca ficam no store local do agente.
 
 ## Scripts executáveis por agente
 

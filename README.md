@@ -6,8 +6,12 @@ A collection of production-grade skills, agents, and extensions for [pi](https:/
 
 ```
 helio-skills/
-├── install.sh       # Install/refresh skills into ~/.pi/agent/skills
-├── skills/          # Reusable capabilities loaded by pi
+├── link-skills.sh   # Link this repo's skills into ~/.pi/agent/skills
+├── skills/          # Reusable capabilities, grouped by category
+│   ├── engineering/ # Languages, frameworks, workflow, review, docs
+│   ├── infra/       # Host/OS, email, deps, file hygiene
+│   └── productivity/# Authoring, thinking, organization
+├── templates/       # Seed files (agent-config: tracker / labels / domain docs)
 ├── agents/          # Read-only subagent definitions
 └── extensions/      # pi extensions (commands, renderers, lifecycle hooks)
 ```
@@ -22,115 +26,71 @@ helio-skills/
 
 ## 🎯 Skills
 
-### Orchestration
+Skills are grouped by **category in the repo** and **flattened at install** (one link per skill).
+See [Install Skills](#install-skills).
 
-#### **Multi-Agent Orchestration**
-Safe orchestration patterns for pi-subagents: workflowScript, async runs, one writer per cwd/worktree, explicit acceptance, and fresh-context review.
+### Engineering
 
-- ✅ Async-default execution patterns
-- ✅ Single-writer worktree isolation
-- ✅ Explicit acceptance contracts
-- ✅ Planner → Writer → Validator chains
-
-**Use when**: Multi-agent workflows with parallel review, dependencies, and durable output merging.
-
-**Links**:
-- [`skills/multi-agent-orchestration/SKILL.md`](skills/multi-agent-orchestration/SKILL.md)
-
----
-
-### Languages & Frameworks
+Languages, frameworks, and code-quality capabilities.
 
 | Skill | Description |
 |---|---|
 | **dotnet** | .NET/C# — `dotnet build`, xUnit, ASP.NET Core, EF Core, NuGet |
 | **python** | Python — pyproject.toml, uv, ruff, pytest, asyncio, src layout |
-| **rust** | Rust — Cargo, modules, Result/?`, Clippy, rustfmt |
+| **rust** | Rust — Cargo, modules, `Result`/`?`, Clippy, rustfmt |
 | **typescript** | TypeScript — strict config, ESM, feature-based modules, Zod |
 | **vuejs** | Vue 3 — Composition API, Vite, Pinia, Vitest |
-
-**Links**:
-- [`skills/dotnet/SKILL.md`](skills/dotnet/SKILL.md)
-- [`skills/python/SKILL.md`](skills/python/SKILL.md)
-- [`skills/rust/SKILL.md`](skills/rust/SKILL.md)
-- [`skills/typescript/SKILL.md`](skills/typescript/SKILL.md)
-- [`skills/vuejs/SKILL.md`](skills/vuejs/SKILL.md)
-
----
-
-### UI & Design
-
-#### **Next.js**
-Next.js (App Router) + React 19 skill.
-
-- ✅ RSC vs client components
-- ✅ Route Handlers, Server Actions
-- ✅ Server-only boundary, i18n, lazy loading
-
-**Links**:
-- [`skills/nextjs/SKILL.md`](skills/nextjs/SKILL.md)
-
----
-
-#### **Design System**
-Token-based styling, accessible primitives, Storybook conventions.
-
-- ✅ Semantic tokens (no raw colors)
-- ✅ AA contrast, keyboard navigation
-- ✅ Storybook: default/loading/error/edge + a11y
-
-**Links**:
-- [`skills/design-system/SKILL.md`](skills/design-system/SKILL.md)
-
----
-
-#### **Playwright**
-End-to-end, visual and Storybook test conventions for coding agents.
-
-- ✅ Run against production build (not dev mode) — deterministic, no cold-compile flake
-- ✅ Privacy invariants, deterministic fake providers (no live AI)
-- ✅ Web-first assertions, a11y, visual regression
-
-**Links**:
-- [`skills/playwright/SKILL.md`](skills/playwright/SKILL.md)
-
----
-
-### Skill Authoring
-
-| Skill | Description |
-|---|---|
-| **writing-for-agents** | Universal levers for writing agent-consumed docs: context pointers, the two loads, information hierarchy, leading words, pruning |
-| **create-skill** | Workflow for creating a skill: capture intent, scaffold from template, draft, test, iterate (user-invoked: `/skill:create-skill`) |
-| **improve-skill** | Audit and refactor an existing skill against the writing levers (user-invoked: `/skill:improve-skill`) |
-
-**Links**:
-- [`skills/writing-for-agents/SKILL.md`](skills/writing-for-agents/SKILL.md)
-- [`skills/create-skill/SKILL.md`](skills/create-skill/SKILL.md)
-- [`skills/improve-skill/SKILL.md`](skills/improve-skill/SKILL.md)
-
----
-
-### Cross-Cutting
-
-| Skill | Description |
-|---|---|
-| **gitmoji** | Gitmoji + Conventional Commits for commit messages |
+| **nextjs** | Next.js (App Router) + React 19 — RSC, Server Actions, i18n |
+| **langgraph** | LangGraph 1.x — state graphs, reducers, checkpointing, HITL |
+| **clean-code** | Clean-code standards: naming, small functions, honest comments |
+| **design-system** | Token-based styling, accessible primitives, Storybook conventions |
+| **playwright** | E2E, visual and Storybook test conventions |
 | **security** | OWASP checklist, secret scanning, SAST, SSRF/authz checks |
 | **docs** | README, ADR, runbooks, API documentation |
+| **gitmoji** | Gitmoji + Conventional Commits for commit messages |
 | **speckit** | Spec Kit — spec-driven development workflow (`/speckit.*`) |
-| **clean-code** | Clean-code standards: naming, small functions, honest comments; formatting left to formatters |
-| **langgraph** | LangGraph 1.x — state graphs, reducers, checkpointing, HITL, prebuilt agents |
-| **show-me** | Explain visually: diagrams, call trees, UI flows as focused HTML artifacts |
+| **multi-agent-orchestration** | Safe parallel subagents — one writer, fresh review |
+| **triage** | Move issues and PRs through triage roles into agent-ready briefs |
+| **code-review** | Two-axis review of a diff — Standards and Spec, in parallel sub-agents |
+| **implement-spec** | Implement a spec's tickets on one integration branch |
+| **to-tickets** | Break a plan or spec into tracer-bullet tickets with blocking edges |
+| **wayfinder** | Plan work too big for one session as a map of decision tickets |
 
-**Links**:
-- [`skills/gitmoji/SKILL.md`](skills/gitmoji/SKILL.md)
-- [`skills/security/SKILL.md`](skills/security/SKILL.md)
-- [`skills/docs/SKILL.md`](skills/docs/SKILL.md)
-- [`skills/speckit/SKILL.md`](skills/speckit/SKILL.md)
-- [`skills/clean-code/SKILL.md`](skills/clean-code/SKILL.md)
-- [`skills/langgraph/SKILL.md`](skills/langgraph/SKILL.md)
-- [`skills/show-me/SKILL.md`](skills/show-me/SKILL.md)
+**Links**: [`skills/engineering/`](skills/engineering/)
+
+---
+
+### Infra
+
+Host/OS triage, email automation, dependency and file hygiene.
+
+| Skill | Description |
+|---|---|
+| **dependency-maintenance** | Triage, rebase and merge bot dependency PRs (Dependabot/Renovate) |
+| **gmail-operations** | Bulk Gmail API work: census, bulk label/archive |
+| **messaging-gateway** | Connect a chat platform to the Hermes gateway end-to-end |
+| **parallel-execution-sizing** | Size parallel workers to host capacity |
+| **windows-app-triage** | Diagnose a Windows app missing from the apps list |
+| **windows-host-triage** | Triage Windows RAM, disk, or app leftovers |
+
+**Links**: [`skills/infra/`](skills/infra/)
+
+---
+
+### Productivity
+
+Skill authoring, thinking tools, and organization.
+
+| Skill | Description |
+|---|---|
+| **writing-for-agents** | Levers for agent-consumed docs: pointers, hierarchy, pruning |
+| **create-skill** | Workflow for creating a skill: capture, scaffold, draft, test |
+| **improve-skill** | Audit and refactor an existing skill against the writing levers |
+| **pre-mortem** | Assume the project failed; work backwards to the causes |
+| **para-method** | Classify notes into the four PARA folders |
+| **show-me** | Explain visually: diagrams, call trees, UI flows as HTML |
+
+**Links**: [`skills/productivity/`](skills/productivity/)
 
 ---
 
@@ -192,11 +152,17 @@ Detects machine capacity and recommends orchestration strategy.
 
 ### Install Skills
 
-One-way sync (repo is source of truth). Non-repo skills already installed are kept:
+Link this repo's skills into Pi's skill directory (`~/.pi/agent/skills`). Entries are
+**links** (junction on Windows, symlink elsewhere) — nothing is copied, so `git pull`
+keeps them current:
 
 ```bash
-bash install.sh
+bash link-skills.sh
 ```
+
+The destination is **flat** (one entry per skill) even though the repo is categorized,
+because that is what the harnesses expect. Override the destination with
+`PI_SKILLS_DIR=/path/to/skills bash link-skills.sh`.
 
 ### Install Extensions
 

@@ -78,9 +78,7 @@ description serves both:
   disambiguation, a version floor, a behaviour gate), move it into the body's
   opening line — the description is the trigger, the body is where the detail
   survives.
-- **Pi's own limit is looser** (max 1024 chars) but the 60-char cap is the house
-  rule for every library on this machine. Pi-specific frontmatter details live in
-  [`references/pi.md`](references/pi.md).
+- **Max 60 chars** for the description. The Hermes skill index truncates beyond that.
 
 ## Write the body
 

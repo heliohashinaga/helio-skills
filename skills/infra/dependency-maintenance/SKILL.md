@@ -121,6 +121,6 @@ summary count — runners print "Found N errors" with zero detail.
 
 - Read the real browser error, not the test-runner's mapped stack — bundle positions misattribute the crash. Drive the failing page with a throwaway Playwright script that prints console errors and pageerrors; the true frame (e.g. `useRouter` inside a framework boundary) names the fix.
 - `gh run rerun` needs `actions:write`; when the token lacks it, an empty commit on the branch is the retrigger. Removing a permanently-red CI job outright requires rewiring every `needs:` that names it, or the workflow fails to parse.
-- After running a repo formatter for a CI whitespace gate, commit only files with real content diffs — formatters rewrite line endings repo-wide, so gate the commit on `git diff --numstat`, not on `git status`.
+- Gate formatter commits on real diffs (`git diff --numstat`), not on `git status` — formatters rewrite line endings repo-wide.
 - A failure in a gate the diff cannot affect earns ONE empty-commit retrigger; merge only on a green rerun, never on the red run.
 - Watch main CI after merging: integration/deploy jobs often run on main only, so a green PR does not imply a green main. A main-only failure predating the change (check push-event history) is pre-existing — report it, do not chase it inside the dep batch without approval.

@@ -87,7 +87,6 @@ Skill authoring, thinking tools, and organization.
 | **create-skill** | Workflow for creating a skill: capture, scaffold, draft, test |
 | **improve-skill** | Audit and refactor an existing skill against the writing levers |
 | **pre-mortem** | Assume the project failed; work backwards to the causes |
-| **para-method** | Classify notes into the four PARA folders |
 | **show-me** | Explain visually: diagrams, call trees, UI flows as HTML |
 
 **Links**: [`skills/productivity/`](skills/productivity/)
